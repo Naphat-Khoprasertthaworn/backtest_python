@@ -1,18 +1,22 @@
-from constant import global_order_number, update_global_order_number, LOT_CONSTANT
+import globals
 
 
 class Order:
     __price = 0
     __lot = 0
     __order_number = 0
-    __type_order = 0  # 0 = bid , 1 = ask
+    __order_type = 0  # 0 = bid , 1 = ask
 
     def __init__(self, price, lot, type_order):
         self.__price = price
-        self.__lot = lot*LOT_CONSTANT
-        self.__order_number = global_order_number
-        self.__type_order = type_order
-        update_global_order_number()
+        self.__lot = lot*globals.LOT_CONSTANT
+        self.__order_number = globals.global_order_number
+
+        self.__order_type = type_order
+        globals.update_global_order_number()
+
+    def __str__(self):
+        return "{order_number="+str(self.__order_number)+" order_type="+str(self.__order_type)+" order_lot="+str(self.__lot)+" price="+str(self.__price)+"}"
 
     def get_price(self):
         return self.__price
@@ -24,4 +28,4 @@ class Order:
         return self.__order_number
 
     def get_order_type(self):
-        return self.__type_order
+        return self.__order_type
