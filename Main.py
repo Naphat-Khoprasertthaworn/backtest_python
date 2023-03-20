@@ -1,13 +1,5 @@
-from Account import Account
-from Order import Order
-
-global global_order_number
-global LOT_CONSTANT
-
-
-def update_global_order_number():
-    global global_order_number
-    global_order_number += 1
+from account_bt import Account
+from order_bt import Order
 
 
 def update_account_status(account, current_exchange):
@@ -25,7 +17,10 @@ def update_account_status(account, current_exchange):
 
 
 if __name__ == '__main__':
-    LOT_CONSTANT = 100000
-    global_order_number = 1
 
-    account_1 = Account(1000)
+    account_1 = Account(1000 * 500)
+
+    order_1 = Order(0.9, 0.002, 0)
+    account_1.add_order(order_1)
+    update_account_status(account_1, 0.91)
+    print("equity", account_1.get_equity())

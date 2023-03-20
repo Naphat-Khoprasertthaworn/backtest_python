@@ -1,4 +1,4 @@
-from Main import global_order_number, update_global_order_number, LOT_CONSTANT
+from constant import global_order_number, update_global_order_number, LOT_CONSTANT
 
 
 class Order:
@@ -23,5 +23,5 @@ class Order:
     def get_order_number(self):
         return self.__order_number
 
-    def get_type_order(self):
+    def get_order_type(self):
         return self.__type_order
