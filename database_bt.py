@@ -18,7 +18,7 @@ class Database:
         return self.__df.iloc[[index]]
 
     def get_df_period(self,start,stop):
-        if stop > globals.global_index or start > stop or start < 0 or stop < 0:
+        if stop > globals.global_index+1 or start > stop or start < 0 or stop < 0:
             return False
         return self.__df.iloc[start:stop]
 
