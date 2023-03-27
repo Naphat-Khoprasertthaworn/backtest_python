@@ -18,8 +18,17 @@ class Database:
         return self.__df.iloc[[index]]
 
     def get_df_period(self,start,stop):
-        if stop > globals.global_index+1 or start > stop or start < 0 or stop < 0:
+        if stop > globals.global_index+1 or start > stop:
             return False
-        return self.__df.iloc[start:stop]
+
+        return self.__df.iloc[max(start,0):min(stop,len(self.__df.index))]
 
 
+
+'''
+    # self.__df['DateTime'] = self.__df['DateTime'].str.replace(" ", "").astype(int)
+    # print(self.__df.head())
+    # self.__df['DateTime'] = self.__df['DateTime'].astype(int)
+    # print(self.__df.head())
+'''
+#%%
